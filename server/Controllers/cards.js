@@ -2,13 +2,13 @@ let id = 1
 let cards = [
     {
         "id" : id++,
-        "date" : "May 27th",
-        "duration" : "7 h 30 m"
+        "date" : "2019-05-27T18:00:00.000Z",
+        "duration" : 7
     },
     {
         "id" : id++,
-        "date" : "May 28th",
-        "duration" : "7 h 45 m"
+        "date" : "2019-05-28T18:00:00.000Z",
+        "duration" : 8
     }
 ]
 

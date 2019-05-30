@@ -65,15 +65,24 @@ class Display extends Component {
 
                 <div className="line"></div>
 
-                <div className="cards-container">
-                    {this.state.cards.map(card => { 
-                        return (
-                            <Card key={card.id} 
-                                card={card} 
-                                deleteCard={() => this.deleteCard(card.id)}
-                                updateCard={this.updateCard}/>
-                        )})}
-                </div>
+                {this.state.cards[0]
+                    ?
+                    <div className="cards-container">
+                        {this.state.cards.map(card => { 
+                            return (
+                                <Card key={card.id} 
+                                    card={card} 
+                                    deleteCard={() => this.deleteCard(card.id)}
+                                    updateCard={this.updateCard}/>
+                            )})}
+                    </div>
+                    :
+                    <div>
+                        <h3>start tracking!</h3>
+                    </div>
+                }
+            
+            
             </div>
         )
     }

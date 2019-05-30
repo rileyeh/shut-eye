@@ -44,14 +44,6 @@
     font-size: 30px;
 }
 
-.buttons {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    padding-bottom: 20px;
-
-}
-
 button {
     font-family: 'Josefin Sans', sans-serif;
     color: white;
@@ -63,3 +55,23 @@ button {
     background: #5D497A;
     padding-top: 2px;
 }
+
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+}
+
+.edit-buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-bottom: 20px;
+}
+
+.edit-buttons button {
+    background: #E9596F;
+}
+
+

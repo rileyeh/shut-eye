@@ -1,5 +1,14 @@
 import React, { Component } from 'react'
 import '../AddCard.css'
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
+
+import MomentLocaleUtils, {
+    formatDate,
+    parseDate,
+  } from 'react-day-picker/moment';
+  
+
 
 class AddCard extends Component {
     constructor(props) {
@@ -36,23 +45,33 @@ class AddCard extends Component {
         this.props.createCard(newCard)
     }
 
+    handleDateChange = (selectedDay, modifiers, dayPickerInput) => {
+        this.setState({
+            date: selectedDay
+        }) 
+    }
+
     render() {
 
         return (
             <div className="add-card">
                 <div className="green-banner">
-                    <h3>enter your sleep data here</h3>
+                    <h2>enter your sleep data here</h2>
                 </div>
 
                 <div className="interactive">
 
                     <div className="inputs">
-                        <span>date: <input 
+                        <span>date: <DayPickerInput
+                            formatDate={formatDate} 
+                            parseDate={parseDate}
+                            format="MMMM Do"
                             type="text"
                             name="date"
                             placeholder="date"
-                            onChange={this.handleChange}
-                            value={this.state.date} /></span>
+                            onDayChange={this.handleDateChange}
+                            value={this.state.date} 
+                            /></span>
                         <span>fell asleep: <select
                             type="number"
                             name="timeAsleep"

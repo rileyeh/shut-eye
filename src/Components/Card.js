@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../Card.css'
 import EditCard from './EditCard'
+import Moment from 'react-moment'
 
 class Card extends Component {
     constructor(props) {
@@ -18,18 +19,15 @@ class Card extends Component {
 
     handleChange = async e => {
         let { value, name } = e.target
-        console.log(55555, this.state)
         await this.setState({
             [name]: value
         }) 
-        console.log(66666, this.state)
     }
 
     handleDuration = () => {
         let { timeAsleep, timeUp } = this.state
         timeAsleep = +timeAsleep
         timeUp = +timeUp
-        console.log(7777, this.state)
         let duration = 12 - timeAsleep + timeUp
         this.setState({
             duration: duration
@@ -43,8 +41,6 @@ class Card extends Component {
         this.props.updateCard(updatedCard)
 
         this.toggleEdit()
-
-        console.log(88888, this.state)
     }
 
     toggleEdit = () => {
@@ -54,9 +50,10 @@ class Card extends Component {
         })
     }
 
+
     render() {
         let { card, updateCard } = this.props
-
+        const dateToFormat = card.date
         return (
             <div className="card-container">
                 {this.state.edit
@@ -66,17 +63,18 @@ class Card extends Component {
                     updateCard={updateCard}
                     handleChange={this.handleChange}
                     state={this.state}
-                    // edit={this.state.edit} 
                     />
                 :
                 <div className="card">
-                    <h2>{card.date}</h2>
+                    <h2><Moment
+                    format="MMMM Do"
+                    >{dateToFormat}</Moment></h2>
                     <p>{card.duration} hours</p>
                 </div>
                 }
                 {this.state.edit
                 ?
-                <div className="buttons">
+                <div className="edit-buttons">
                     <button onClick={this.toggleEdit}>cancel</button>
                     <button onClick={this.handleUpdate}>update</button>
                 </div>
