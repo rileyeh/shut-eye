@@ -1,0 +1,46 @@
+.add-card {
+    width: 500px;
+    height: 225px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 8px 8px 30px rgba(102, 199, 199, 0.4 );
+}
+
+.green-banner {
+    height: 55px;
+    width: 100%;
+    background: #68DB78;
+    text-align: center;
+    border-radius: 20px 20px 0px 0px;
+    color: white;
+}
+
+.interactive {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.inputs {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    color: #225082;
+}
+
+.button button{
+    height: 80px;
+    width: 80px;
+    background: #68DB78;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 75px;
+    padding-bottom: 20px;
+}

@@ -1,0 +1,39 @@
+.display {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.adder {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 150px;
+    width: 70vw;
+    height: 275px;
+}
+
+.adder img {
+    height: 275px;
+}
+
+
+.line {
+    height: 3px;
+    width: 90%;
+    background: #68DB78;
+}
+
+.cards-container {
+    width: 80vw;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 5px;
+}
+
+.card {
+
+}
