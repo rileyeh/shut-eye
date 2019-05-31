@@ -77,8 +77,8 @@ class Display extends Component {
                             )})}
                     </div>
                     :
-                    <div>
-                        <h3>start tracking!</h3>
+                    <div className="placeholder">
+                        <h1>start tracking!</h1>
                     </div>
                 }
             

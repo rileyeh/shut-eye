@@ -13,8 +13,8 @@ let cards = [
 ]
 
 module.exports = {
-    read: (req, res) => res.send(cards),
-    create: (req, res) => {
+    readCards: (req, res) => res.send(cards),
+    createCard: (req, res) => {
         newCard = req.body
         newCard.id = id++
 
@@ -22,7 +22,7 @@ module.exports = {
 
         res.send(cards)
     },
-    update: (req, res) => {
+    updateCard: (req, res) => {
         let {id} = req.params
         let updatedCard = req.body
         updatedCard.id === id
@@ -30,7 +30,7 @@ module.exports = {
         cards.splice(index, 1, updatedCard)
         res.send(cards)
     },
-    delete: (req, res) => {
+    deleteCard: (req, res) => {
         let {id} = req.params
         let index = cards.findIndex(card => +card.id === +id)
         cards.splice(index, 1)

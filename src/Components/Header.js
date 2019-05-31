@@ -4,9 +4,9 @@ import logo from '../logo.png'
 
 function Header() {
     return (
-        <div className="logo">
+        <header className="logo">
             <img src={logo} />
-        </div>
+        </header>
     )
 }
 

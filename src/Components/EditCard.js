@@ -1,32 +1,41 @@
 import React, { Component } from 'react'
 import '../EditCard.css'
+import DayPickerInput from 'react-day-picker/DayPickerInput'
+import 'react-day-picker/lib/style.css'
+
+import MomentLocaleUtils, {
+    formatDate,
+    parseDate,
+  } from 'react-day-picker/moment'
 
 class EditCard extends Component {
-    constructor(props) {
-        super(props)
+    // constructor(props) {
+    //     super(props)
 
-        this.state = {
-            date: '',
-            duration: 0,
-            timeAsleep: 0,
-            timeUp: 0,
-        }
-    }
-
+    //     this.state = {
+    //         date: '',
+    //         duration: 0,
+    //         timeAsleep: 0,
+    //         timeUp: 0,
+    //     }
+    // }
+    
     render() {
         let {state} = this.props
         return (
                 <div className="editor">
-                    <span>date: <input 
+                    <span>date: <DayPickerInput
+                            formatDate={formatDate} 
+                            parseDate={parseDate}
+                            format="MMMM Do"
                             type="text"
                             name="date"
                             placeholder="date"
-                            onChange={this.props.handleChange}
+                            onDayChange={this.props.handleDateChange}
                             value={state.date} /></span>
                         <span>fell asleep: <select
                             type="number"
                             name="timeAsleep"
-                            placeholder="When did you fall asleep?"
                             onChange={this.props.handleChange}
                             value={state.timeAsleep} >
                                 <option>time</option>
@@ -46,7 +55,6 @@ class EditCard extends Component {
                         <span>woke up: <select
                             type="number"
                             name="timeUp"
-                            placeholder="When did you wake up?"
                             onChange={this.props.handleChange}
                             value={state.timeUp} >
                                 <option>time</option>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import '../AddCard.css'
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
+import DayPickerInput from 'react-day-picker/DayPickerInput'
+import 'react-day-picker/lib/style.css'
 
 import MomentLocaleUtils, {
     formatDate,
     parseDate,
-  } from 'react-day-picker/moment';
+  } from 'react-day-picker/moment'
   
 
 
@@ -43,6 +43,13 @@ class AddCard extends Component {
         await this.handleDuration()
         let newCard = this.state
         this.props.createCard(newCard)
+
+        this.setState({
+            date: '',
+            duration: 0,
+            timeAsleep: 0,
+            timeUp: 0
+        })
     }
 
     handleDateChange = (selectedDay, modifiers, dayPickerInput) => {

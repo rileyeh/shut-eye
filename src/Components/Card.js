@@ -50,6 +50,12 @@ class Card extends Component {
         })
     }
 
+    handleDateChange = (selectedDay, modifiers, dayPickerInput) => {
+        this.setState({
+            date: selectedDay
+        }) 
+    }
+
 
     render() {
         let { card, updateCard } = this.props
@@ -63,6 +69,7 @@ class Card extends Component {
                     updateCard={updateCard}
                     handleChange={this.handleChange}
                     state={this.state}
+                    handleDateChange={this.handleDateChange}
                     />
                 :
                 <div className="card">

@@ -1,3 +1,12 @@
+@keyframes infinite-spinning {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
 .display {
     width: 100vw;
     min-height: 85vh;
@@ -23,7 +32,7 @@
 .line {
     height: 3px;
     width: 90%;
-    background: #68DB78;
+    background: #67C29E;
 }
 
 .cards-container {
@@ -35,6 +44,10 @@
     margin: 5px;
 }
 
-.card {
-
+.placeholder {
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
