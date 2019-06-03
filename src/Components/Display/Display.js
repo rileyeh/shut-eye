@@ -59,7 +59,7 @@ class Display extends Component {
                 <div className="adder">
                     <img src={moons} alt="moon" />
                     <AddCard 
-                        createCard={this.createCard} />
+                        createCard={this.createCard}/>
                 </div>
 
                 <div className="line"></div>
@@ -72,12 +72,15 @@ class Display extends Component {
                                 <Card 
                                     key={card.id} 
                                     card={card} 
+                                    cards={this.state.cards}
                                     deleteCard={() => this.deleteCard(card.id)}
-                                    updateCard={this.updateCard}/>
+                                    updateCard={this.updateCard}
+                                    getSunrise={this.getSunrise}/>
                             )})}
                     </section>
                     :
                     <div className="placeholder">
+                        <img src={moons} alt="moon" className="moon-rise"/>
                         <h1>start tracking!</h1>
                     </div>
                 }

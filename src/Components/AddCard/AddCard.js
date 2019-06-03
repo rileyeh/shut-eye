@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 import './AddCard.css'
 import DayPickerInput from 'react-day-picker/DayPickerInput'
 import 'react-day-picker/lib/style.css'
@@ -15,7 +16,9 @@ class AddCard extends Component {
             date: '',
             timeAsleep: 0,
             timeUp: 0,
-            duration: 0
+            duration: 0,
+            sunrise: '',
+            sunset: ''
         }
     }
 
@@ -46,12 +49,14 @@ class AddCard extends Component {
     handleClick = async e => {
         await this.handleDuration()
     
-        const { date, timeAsleep, timeUp, duration } = this.state;
+        const { date, timeAsleep, timeUp, duration, sunrise, sunset } = this.state;
         let newCard = {
           date,
           timeAsleep,
           timeUp,
-          duration
+          duration,
+          sunrise, 
+          sunset
         }
     
         this.props.createCard(newCard)
@@ -63,6 +68,24 @@ class AddCard extends Component {
             duration: 0
         })
     }
+
+    getSunrise = () => {
+        axios.get('https://weather.cit.api.here.com/weather/1.0/report.json?product=forecast_astronomy&name=Salt%20Lake%20City&app_id=wdbRu3g9YpSx46j0g3Xy&app_code=5cgubcCct8EsR7GG0DgZWw')
+            .then(async response => {
+                let res = response.data.astronomy.astronomy
+                let {date} = this.state
+
+                let index = await res.findIndex(item => item.utcTime.substring(0,11) === date.substring(0,11))
+
+                let {sunrise} = res[index]
+                let {sunset} = res[index]
+
+                this.setState({
+                    sunrise: sunrise,
+                    sunset: sunset
+                })
+            })
+        }
 
     render() {
         return (

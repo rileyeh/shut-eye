@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import './Card.css'
 import EditCard from '../EditCard/EditCard'
 import Moment from 'react-moment'
+import axios from 'axios'
+import sunrise from '../Pictures/sunrise.svg'
+import sunset from '../Pictures/sunset.svg'
 
 class Card extends Component {
     constructor(props) {
@@ -14,6 +17,8 @@ class Card extends Component {
             duration,
             timeAsleep,
             timeUp,
+            sunrise: '',
+            sunset: '',
             edit: false
         }
 
@@ -52,6 +57,28 @@ class Card extends Component {
         })
     }
 
+    componentWillMount() {
+        this.getSunrise()
+    }
+
+    getSunrise = () => {
+        axios.get('https://weather.cit.api.here.com/weather/1.0/report.json?product=forecast_astronomy&name=Salt%20Lake%20City&app_id=wdbRu3g9YpSx46j0g3Xy&app_code=5cgubcCct8EsR7GG0DgZWw')
+            .then(response => {
+                let res = response.data.astronomy.astronomy
+                let {date} = this.state
+
+                let index = res.findIndex(item => item.utcTime.substring(0,11) === date.substring(0,11))
+
+                let {sunrise} = res[index]
+                let {sunset} = res[index]
+
+                this.setState({
+                    sunrise: sunrise,
+                    sunset: sunset
+                })
+            })
+        }
+
     render() {
         let { card, updateCard } = this.props
         const dateToFormat = card.date
@@ -73,6 +100,16 @@ class Card extends Component {
                     <p>fell asleep: {card.timeAsleep} P.M.</p>
                     <p>woke up: {card.timeUp} A.M.</p>
                     <p>time asleep: {card.duration} hours</p>
+                    <div className="sunrise-sunset">
+                        <div className="sunrise">
+                            <img src={sunrise} alt="sun" />
+                            <p>{this.state.sunrise}</p>
+                        </div>
+                        <div className="sunset">
+                            <img src={sunset} alt="moon" />
+                            <p>{this.state.sunset}</p>
+                        </div>
+                    </div>
                 </div>
                 }
                 {this.state.edit

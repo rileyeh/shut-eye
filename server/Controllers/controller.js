@@ -2,17 +2,21 @@ let id = 2
 let cards = [
     {
         id: 0,
-        date: '2019-05-27T18:00:00.000Z',
+        date: '2019-06-03T18:00:00.000Z',
         timeAsleep: 10,
         timeUp: 6,
-        duration: 8
+        duration: 8,
+        sunrise: '5:58 A.M.',
+        sunset: '8:52 P.M'
     },
     {
         id: 1,
-        date: '2019-05-28T18:00:00.000Z',
+        date: '2019-06-04T18:00:00.000Z',
         timeAsleep: 11,
         timeUp: 6,
-        duration: 7
+        duration: 7,
+        sunrise: '5:58 A.M.',
+        sunset: '8:53 P.M'
     }
 ]
 
