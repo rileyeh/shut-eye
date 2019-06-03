@@ -1,15 +1,7 @@
-@keyframes infinite-spinning {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .display {
   width: 100vw;
   min-height: 85vh;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
