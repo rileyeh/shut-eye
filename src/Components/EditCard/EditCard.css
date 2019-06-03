@@ -1,0 +1,23 @@
+.editor {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    color: #225082;
+    /* position: relative;
+    top: 15px; */
+}
+
+.editor h2 {    
+    box-sizing: border-box;
+    width: 250px;
+    height: 78px;
+    background: #67C29E;
+    padding-top: 15px;
+    margin: 0px;
+    text-align: center;
+    border: none;
+    border-radius: 18px 18px 0px 0px;
+    color: white;
+}

@@ -1,18 +1,15 @@
-const express = require('express')
-
-const cardCtrl = require('./Controllers/controller')
-
-const app = express()
-const port = 4500
-
+let express = require('express')
+let app = express()
 app.use(express.json())
+port = 4500
 
+const ctrl = require('./controllers/controller')
 
-app.get('/api/cards', cardCtrl.readCards)
-app.post('/api/cards', cardCtrl.createCard)
-app.put('/api/cards/:id', cardCtrl.updateCard)
-app.delete('/api/cards/:id', cardCtrl.deleteCard)
+app.get('/api/cards', ctrl.readCards)
+app.post('/api/card', ctrl.createCard)
+app.delete('/api/card/:id', ctrl.deleteCard)
+app.put('/api/card/:id', ctrl.updateCard)
 
 app.listen(port, () => {
-    console.log(`hey there, we're on port ${port}`)
+    console.log(`up and running on port ${port}`)
 })

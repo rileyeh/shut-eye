@@ -1,38 +1,31 @@
 import React, { Component } from 'react'
-import '../EditCard.css'
-import DayPickerInput from 'react-day-picker/DayPickerInput'
-import 'react-day-picker/lib/style.css'
+import './EditCard.css'
+import Moment from 'react-moment'
 
-import MomentLocaleUtils, {
-    formatDate,
-    parseDate,
-  } from 'react-day-picker/moment'
 
 class EditCard extends Component {
-    // constructor(props) {
-    //     super(props)
+    constructor(props) {
+        super(props)
 
-    //     this.state = {
-    //         date: '',
-    //         duration: 0,
-    //         timeAsleep: 0,
-    //         timeUp: 0,
-    //     }
-    // }
-    
+        let {date, duration, timeAsleep, timeUp} = props.card
+
+        this.state = {
+            date,
+            duration,
+            timeAsleep,
+            timeUp,
+        }
+    }
+
     render() {
         let {state} = this.props
+        const dateToFormat = this.state.date
         return (
                 <div className="editor">
-                    <span>date: <DayPickerInput
-                            formatDate={formatDate} 
-                            parseDate={parseDate}
-                            format="MMMM Do"
-                            type="text"
-                            name="date"
-                            placeholder="date"
-                            onDayChange={this.props.handleDateChange}
-                            value={state.date} /></span>
+                    <h2><Moment
+                    format="MMMM Do"
+                    >{dateToFormat}</Moment></h2>
+                    <div className="inputs">
                         <span>fell asleep: <select
                             type="number"
                             name="timeAsleep"
@@ -71,6 +64,7 @@ class EditCard extends Component {
                                 <option>11</option>
                                 <option>12</option>
                             </select></span>
+                    </div>
                 </div>
         )
     }

@@ -1,17 +1,19 @@
 import React, { Component } from 'react'
-import '../Card.css'
-import EditCard from './EditCard'
+import './Card.css'
+import EditCard from '../EditCard/EditCard'
 import Moment from 'react-moment'
 
 class Card extends Component {
     constructor(props) {
         super(props)
 
+        let {date, duration, timeAsleep, timeUp} = props.card
+
         this.state = {
-            date: '',
-            duration: 0,
-            timeAsleep: 0,
-            timeUp: 0,
+            date,
+            duration,
+            timeAsleep,
+            timeUp,
             edit: false
         }
 
@@ -41,7 +43,7 @@ class Card extends Component {
         this.props.updateCard(updatedCard)
 
         this.toggleEdit()
-    }
+        }
 
     toggleEdit = () => {
         let {edit} = this.state
@@ -49,13 +51,6 @@ class Card extends Component {
             edit: !edit
         })
     }
-
-    handleDateChange = (selectedDay, modifiers, dayPickerInput) => {
-        this.setState({
-            date: selectedDay
-        }) 
-    }
-
 
     render() {
         let { card, updateCard } = this.props
@@ -69,14 +64,15 @@ class Card extends Component {
                     updateCard={updateCard}
                     handleChange={this.handleChange}
                     state={this.state}
-                    handleDateChange={this.handleDateChange}
                     />
                 :
                 <div className="card">
                     <h2><Moment
                     format="MMMM Do"
                     >{dateToFormat}</Moment></h2>
-                    <p>{card.duration} hours</p>
+                    <p>fell asleep: {card.timeAsleep} P.M.</p>
+                    <p>woke up: {card.timeUp} A.M.</p>
+                    <p>time asleep: {card.duration} hours</p>
                 </div>
                 }
                 {this.state.edit

@@ -1,6 +1,6 @@
 import React from 'react'
-import '../Header.css'
-import logo from '../logo.png'
+import './Header.css'
+import logo from '../Pictures/logo.svg'
 
 function Header() {
     return (

@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
-import '../AddCard.css'
+import './AddCard.css'
 import DayPickerInput from 'react-day-picker/DayPickerInput'
 import 'react-day-picker/lib/style.css'
-
 import MomentLocaleUtils, {
     formatDate,
     parseDate,
   } from 'react-day-picker/moment'
-  
-
 
 class AddCard extends Component {
     constructor(props) {
@@ -16,40 +13,10 @@ class AddCard extends Component {
 
         this.state = {
             date: '',
-            duration: 0,
             timeAsleep: 0,
-            timeUp: 0
+            timeUp: 0,
+            duration: 0
         }
-    }
-
-    handleChange = async e => {
-        let { value, name } = e.target
-        await this.setState({
-            [name]: value
-        }) 
-    }
-
-    handleDuration = async () => {
-        let { timeAsleep, timeUp } = this.state
-        timeAsleep = +timeAsleep
-        timeUp = +timeUp
-        let duration = 12 - timeAsleep + timeUp
-        await this.setState({
-            duration: duration
-        })
-    }
-
-    handleClick = async () => {
-        await this.handleDuration()
-        let newCard = this.state
-        this.props.createCard(newCard)
-
-        this.setState({
-            date: '',
-            duration: 0,
-            timeAsleep: 0,
-            timeUp: 0
-        })
     }
 
     handleDateChange = (selectedDay, modifiers, dayPickerInput) => {
@@ -58,8 +25,46 @@ class AddCard extends Component {
         }) 
     }
 
-    render() {
+    handleChange = e => {
+        let {value, name} = e.target
 
+        this.setState({
+            [name]: value
+        })
+    }
+    
+    handleDuration() {
+        let { timeAsleep, timeUp } = this.state
+        timeAsleep = +timeAsleep
+        timeUp = +timeUp
+        let duration = 12 - timeAsleep + timeUp
+        this.setState({
+            duration: duration
+        })
+    }
+
+    handleClick = async e => {
+        await this.handleDuration()
+    
+        const { date, timeAsleep, timeUp, duration } = this.state;
+        let newCard = {
+          date,
+          timeAsleep,
+          timeUp,
+          duration
+        }
+    
+        this.props.createCard(newCard)
+    
+        this.setState({
+            date: '',
+            timeAsleep: 0,
+            timeUp: 0,
+            duration: 0
+        })
+    }
+
+    render() {
         return (
             <div className="add-card">
                 <div className="green-banner">
@@ -70,6 +75,7 @@ class AddCard extends Component {
 
                     <div className="inputs">
                         <span>date: <DayPickerInput
+                            className="day-picker-input"
                             formatDate={formatDate} 
                             parseDate={parseDate}
                             format="MMMM Do"

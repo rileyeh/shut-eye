@@ -23,7 +23,6 @@
     background: white;
     border: none;
     border-radius: 20px;
-
 }
 
 .card h2 {    
@@ -41,7 +40,7 @@
 
 .card p {
     color: #225082;
-    font-size: 30px;
+    line-height: 1px;
 }
 
 button {
@@ -60,18 +59,20 @@ button {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .edit-buttons {
     display: flex;
     width: 100%;
     justify-content: space-evenly;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 }
 
 .edit-buttons button {
     background: #E9596F;
+
 }
+
 
 
