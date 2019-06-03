@@ -3,7 +3,7 @@ import './Display.css'
 import axios from 'axios';
 import AddCard from '../AddCard/AddCard'
 import Card from '../Card/Card'
-import moons from '../Pictures/moons.svg'
+import moons from '../Pictures/orangemoons.svg'
 
 class Display extends Component {
     constructor(props) {

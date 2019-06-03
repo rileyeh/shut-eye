@@ -1,0 +1,18 @@
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    padding-bottom: 10px;
+}
+
+.buttons button {
+    font-family: 'Josefin Sans', sans-serif;
+    color: white;
+    font-size: 16px;
+    height: 35px;
+    width: 85px;
+    border: none;
+    border-radius: 5px;
+    background: #5D497A;
+    padding-top: 2px;
+}

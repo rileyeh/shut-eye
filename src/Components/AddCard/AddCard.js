@@ -150,7 +150,7 @@ class AddCard extends Component {
                             </select></span>
                     </div>
 
-                    <div className="button">
+                    <div className="add-button">
                         <button onClick={this.handleClick}>+</button>
                     </div>
 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './Card.css'
 import EditCard from '../EditCard/EditCard'
+import EditButtons from '../EditButtons/EditButtons'
+import Buttons from '../Buttons/Buttons'
 import Moment from 'react-moment'
 import axios from 'axios'
 import sunrise from '../Pictures/sunrise.svg'
@@ -97,9 +99,9 @@ class Card extends Component {
                     <h2><Moment
                     format="MMMM Do"
                     >{dateToFormat}</Moment></h2>
-                    <p>fell asleep: {card.timeAsleep} P.M.</p>
-                    <p>woke up: {card.timeUp} A.M.</p>
-                    <p>time asleep: {card.duration} hours</p>
+                    <p>fell asleep: <span>{card.timeAsleep} P.M.</span></p>
+                    <p>woke up: <span>{card.timeUp} A.M.</span></p>
+                    <p>time asleep: <span>{card.duration} hours</span></p>
                     <div className="sunrise-sunset">
                         <div className="sunrise">
                             <img src={sunrise} alt="sun" />
@@ -114,15 +116,15 @@ class Card extends Component {
                 }
                 {this.state.edit
                 ?
-                <div className="edit-buttons">
-                    <button onClick={this.toggleEdit}>cancel</button>
-                    <button onClick={this.handleUpdate}>update</button>
-                </div>
+                <EditButtons
+                    toggleEdit={this.toggleEdit}
+                    handleUpdate={this.handleUpdate} 
+                    />
                 :
-                <div className="buttons">
-                    <button onClick={this.toggleEdit}>edit</button>
-                    <button onClick={this.props.deleteCard}>delete</button>
-                </div>
+                <Buttons 
+                    toggleEdit={this.toggleEdit}
+                    deleteCard={this.props.deleteCard}
+                    />
                 }
 
             </div>
