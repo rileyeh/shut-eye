@@ -3,7 +3,9 @@ let app = express()
 app.use(express.json())
 port = 4500
 
-const ctrl = require('./controllers/controller')
+const ctrl = require('./Controllers/controller')
+
+app.use( express.static( `${__dirname}/../build` ) )
 
 app.get('/api/cards', ctrl.readCards)
 app.post('/api/card', ctrl.createCard)
