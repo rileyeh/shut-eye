@@ -60,23 +60,17 @@ class Card extends Component {
     }
 
     componentWillMount() {
-        this.getSunrise()
+        this.getSun()
     }
 
-    getSunrise = () => {
-        axios.get('https://weather.cit.api.here.com/weather/1.0/report.json?product=forecast_astronomy&name=Salt%20Lake%20City&app_id=wdbRu3g9YpSx46j0g3Xy&app_code=5cgubcCct8EsR7GG0DgZWw')
+    getSun = () => {
+        let date = this.state.date.substring(0,10)
+        axios.get(`https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400&date=${date}`)
             .then(response => {
-                let res = response.data.astronomy.astronomy
-                let {date} = this.state
-
-                let index = res.findIndex(item => item.utcTime.substring(0,11) === date.substring(0,11))
-
-                let {sunrise} = res[index]
-                let {sunset} = res[index]
-
+                let {sunrise, sunset} = response.data.results
                 this.setState({
-                    sunrise: sunrise,
-                    sunset: sunset
+                    sunrise,
+                    sunset
                 })
             })
         }

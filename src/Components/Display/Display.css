@@ -1,7 +1,6 @@
 .display {
   width: 100vw;
   min-height: 85vh;
-  max-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +28,6 @@
 
 .cards-container {
   width: 80vw;
-  height: 100%;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
