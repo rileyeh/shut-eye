@@ -5,7 +5,7 @@ import logo from '../Pictures/logo.svg'
 function Header() {
     return (
         <header className="logo">
-            <img src={logo} />
+            <img src={logo} alt='logo'/>
         </header>
     )
 }
